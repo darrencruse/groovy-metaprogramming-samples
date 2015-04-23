@@ -1,0 +1,58 @@
+* Notes for demoing groovy scripts from TextMate and/or Eclipse:
+
+I've got an Eclipse Workspace set up with my files with the intent that I can show them (mainly) in TextMate, or alternately, by single stepping them in Eclipse (which might be the best way to really deeply get across what's happening to people who've never seen the code before).
+
+The Workspace is at:
+
+/Users/macbookmacbook/GroovyWorkspaces/mop
+
+* TextMate running with Command-R (to popup window):
+
+I had a devil of a time figuring out how to configure CLASSPATH so command-R on a groovy script in textmate would be correct.
+
+Turns out the main shell script for running groovy from textmate is at:
+
+/Users/macbookmacbook/Library/Application Support/TextMate/Pristine Copy/Bundles/Groovy.tmbundle/Support/bin/groovymate.sh
+
+And in that I just needed to add the line:
+
+export CLASSPATH=/Users/macbookmacbook/GroovyWorkspaces/mop/src:$CLASSPATH
+
+Note that /Users/macbookmacbook/GroovyWorkspaces/mop/src is the folder that contains the "com" folder, so package paths starting "com." should resolve based on the above pointing to "src".
+
+* TextMate running with Command-T (to tooltip)
+
+Go to Bundles->Bundle Editor->Show Bundle Editor
+
+Then go to Groovy / Run in Tooltip and add these two lines near the top:
+
+export GROOVY_HOME=~/groovy-1.8.0
+export CLASSPATH=/Users/macbookmacbook/GroovyWorkspaces/mop/src:$CLASSPATH
+
+* Demoing the WebSequenceDiagrammer:
+
+To run those you use the MetaScript which invokes the other script.
+
+So as lead-in to demoing this you need to cover the MetaScript idea.  There's a little command line help you might want to show that as part of the explanation.
+
+The MetaScript needs (at least) the name of the script to run.
+
+In TextMate to run a script with arguments you do Shift-Command-R.
+
+It will popup an input box for arguments I just entered:  Demo.groovy
+
+After running there's a Demo.html file there.
+
+To open it the first time you control-click on the Demo.html file icon in the TextMate "tray" and choose Open in Safari.
+
+Thereafter (so long as Safari is the only browser running), after you run the script again, doing command-R with the focus in the open Demo.html file will refresh the already open Safari window causing it to show the changes.
+
+----
+
+If I talk about the memoization example, I should explain it's just a learning example because Groovy 1.8 has now added this feature:
+
+http://java.dzone.com/articles/cool-stuff-groovy-18-0?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+zones%2Fgroovy+(Groovy+Zone)
+
+In fact maybe I should align what I've done to be closer to Groovy 1.8?  Wouldn't it be more interesting as an example if I'm effectively showing how *that* would be implemented.  It looks to me I'd need to change so instead of Class.metaclass I'd be doing Closure.metaclass.  Maybe I can/should just look at the Groovy 1.8 source directly to see exactly what they've done.
+
+

@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Demo Sequence Diagram</title>
+	</head>
+	<body>
+		<div class=wsd wsd_style="napkin"><pre>
+	Demo->com.mop.tracing.TracingDemo: new com.mop.tracing.TracingDemo()
+activate com.mop.tracing.TracingDemo
+note left of com.mop.tracing.TracingDemo: Time: 0.000875s
+com.mop.tracing.TracingDemo-->Demo: com.mop.tracing.TracingDemo@e01f19
+Demo->com.mop.tracing.TracingDemo: go()
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: new com.mop.bean.SimpleClass()
+activate com.mop.bean.SimpleClass
+note left of com.mop.bean.SimpleClass: Time: 0.000250s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: com.mop.bean.SimpleClass@1fcae3
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: add(2, 4)
+note left of com.mop.bean.SimpleClass: Time: 0.001371s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: 6
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: setHeading(Test)
+note left of com.mop.bean.SimpleClass: Time: 0.000475s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: 
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: printItems([a, b, c])
+com.mop.bean.SimpleClass->com.mop.bean.SimpleClass: printItem(a)
+note left of com.mop.bean.SimpleClass: Time: 0.001590s
+com.mop.bean.SimpleClass->com.mop.bean.SimpleClass: printItem(b)
+note left of com.mop.bean.SimpleClass: Time: 0.000246s
+com.mop.bean.SimpleClass->com.mop.bean.SimpleClass: printItem(c)
+note left of com.mop.bean.SimpleClass: Time: 0.000654s
+note left of com.mop.bean.SimpleClass: Time: 0.007244s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: 
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: getHeading()
+note left of com.mop.bean.SimpleClass: Time: 0.000190s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: Test
+com.mop.tracing.TracingDemo->com.mop.bean.SimpleClass: getCount()
+note left of com.mop.bean.SimpleClass: Time: 0.000174s
+com.mop.bean.SimpleClass-->com.mop.tracing.TracingDemo: 3
+note left of com.mop.tracing.TracingDemo: Time: 0.030412s
+com.mop.tracing.TracingDemo-->Demo: 
+		</pre></div><script type="text/javascript" src="http://www.websequencediagrams.com/service.js"></script>
+		</body>
+	</html>
+	
